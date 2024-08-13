@@ -42,7 +42,7 @@ view_impl_map(struct view *view)
 	enum property ret = window_rules_get_property(view, "skipTaskbar");
 	if (ret == LAB_PROP_TRUE) {
 		if (view->toplevel.handle) {
-			wlr_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
+			box_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
 		}
 	}
 

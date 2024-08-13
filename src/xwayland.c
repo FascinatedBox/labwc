@@ -500,7 +500,7 @@ xwayland_view_get_string_prop(struct view *view, const char *prop)
 	if (!strcmp(prop, "class")) {
 		return xwayland_surface->class;
 	}
-	/* We give 'class' for wlr_foreign_toplevel_handle_v1_set_app_id() */
+	/* We give 'class' for box_foreign_toplevel_handle_v1_set_app_id() */
 	if (!strcmp(prop, "app_id")) {
 		return xwayland_surface->class;
 	}
@@ -681,7 +681,8 @@ init_foreign_toplevel(struct view *view)
 	if (!parent || !parent->toplevel.handle) {
 		return;
 	}
-	wlr_foreign_toplevel_handle_v1_set_parent(view->toplevel.handle, parent->toplevel.handle);
+
+	box_foreign_toplevel_handle_v1_set_parent(view->toplevel.handle, parent->toplevel.handle);
 }
 
 static void
@@ -796,7 +797,8 @@ xwayland_view_unmap(struct view *view, bool client_request)
 	 */
 out:
 	if (client_request && view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
+		box_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
+		box_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
 		view->toplevel.handle = NULL;
 	}
 }

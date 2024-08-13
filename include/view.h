@@ -250,13 +250,14 @@ struct view {
 	} resize_outlines;
 
 	struct foreign_toplevel {
-		struct wlr_foreign_toplevel_handle_v1 *handle;
+		struct box_foreign_toplevel_handle_v1 *handle;
 		struct wl_listener maximize;
 		struct wl_listener minimize;
 		struct wl_listener fullscreen;
 		struct wl_listener activate;
 		struct wl_listener close;
 		struct wl_listener destroy;
+		struct wl_listener move;
 	} toplevel;
 
 	struct mappable mappable;

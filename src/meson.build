@@ -1,4 +1,5 @@
 labwc_sources = files(
+  'box_foreign_toplevel_management_v1.c',
   'action.c',
   'buffer.c',
   'debug.c',

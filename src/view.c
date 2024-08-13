@@ -391,7 +391,7 @@ view_set_activated(struct view *view, bool activated)
 		view->impl->set_activated(view, activated);
 	}
 	if (view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_set_activated(
+		box_foreign_toplevel_handle_v1_set_activated(
 			view->toplevel.handle, activated);
 	}
 
@@ -657,7 +657,7 @@ _minimize(struct view *view, bool minimized)
 		return;
 	}
 	if (view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_set_minimized(
+		box_foreign_toplevel_handle_v1_set_minimized(
 			view->toplevel.handle, minimized);
 	}
 	if (view->impl->minimize) {
@@ -1231,7 +1231,7 @@ set_maximized(struct view *view, enum view_axis maximized)
 		view->impl->maximize(view, (maximized == VIEW_AXIS_BOTH));
 	}
 	if (view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_set_maximized(
+		box_foreign_toplevel_handle_v1_set_maximized(
 			view->toplevel.handle, (maximized == VIEW_AXIS_BOTH));
 	}
 	view->maximized = maximized;
@@ -1592,7 +1592,7 @@ set_fullscreen(struct view *view, bool fullscreen)
 		view->impl->set_fullscreen(view, fullscreen);
 	}
 	if (view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_set_fullscreen(
+		box_foreign_toplevel_handle_v1_set_fullscreen(
 			view->toplevel.handle, fullscreen);
 	}
 	view->fullscreen = fullscreen;
@@ -2337,7 +2337,7 @@ view_update_title(struct view *view)
 		return;
 	}
 	ssd_update_title(view->ssd);
-	wlr_foreign_toplevel_handle_v1_set_title(view->toplevel.handle, title);
+	box_foreign_toplevel_handle_v1_set_title(view->toplevel.handle, title);
 }
 
 void
@@ -2348,7 +2348,7 @@ view_update_app_id(struct view *view)
 	if (!view->toplevel.handle || !app_id) {
 		return;
 	}
-	wlr_foreign_toplevel_handle_v1_set_app_id(
+	box_foreign_toplevel_handle_v1_set_app_id(
 		view->toplevel.handle, app_id);
 }
 
@@ -2477,7 +2477,7 @@ view_destroy(struct view *view)
 	wl_list_remove(&view->destroy.link);
 
 	if (view->toplevel.handle) {
-		wlr_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
+		box_foreign_toplevel_handle_v1_destroy(view->toplevel.handle);
 	}
 
 	if (server->grabbed_view == view) {

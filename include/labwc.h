@@ -16,7 +16,6 @@
 #include <wlr/types/wlr_buffer.h>
 #include <wlr/types/wlr_cursor.h>
 #include <wlr/types/wlr_data_device.h>
-#include <wlr/types/wlr_foreign_toplevel_management_v1.h>
 #include <wlr/types/wlr_gamma_control_v1.h>
 #include <wlr/types/wlr_input_device.h>
 #include <wlr/types/wlr_keyboard.h>
@@ -44,6 +43,7 @@
 #include <wlr/types/wlr_input_method_v2.h>
 #include <wlr/types/wlr_tablet_v2.h>
 #include <wlr/util/log.h>
+#include "box_foreign_toplevel_management_v1.h"
 #include "config/keybind.h"
 #include "config/rcxml.h"
 #include "input/cursor.h"
@@ -334,7 +334,7 @@ struct server {
 
 	struct session_lock_manager *session_lock_manager;
 
-	struct wlr_foreign_toplevel_manager_v1 *foreign_toplevel_manager;
+	struct box_foreign_toplevel_manager_v1 *box_auto_manager;
 
 	struct wlr_drm_lease_v1_manager *drm_lease_manager;
 	struct wl_listener drm_lease_request;

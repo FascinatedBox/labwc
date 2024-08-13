@@ -516,8 +516,8 @@ server_init(struct server *server)
 	wl_signal_add(&server->constraints->events.new_constraint,
 		&server->new_constraint);
 
-	server->foreign_toplevel_manager =
-		wlr_foreign_toplevel_manager_v1_create(server->wl_display);
+	server->box_auto_manager =
+		box_foreign_toplevel_manager_v1_create(server->wl_display);
 
 	session_lock_init(server);
 

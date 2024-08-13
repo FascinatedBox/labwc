@@ -629,7 +629,7 @@ init_foreign_toplevel(struct view *view)
 	if (!parent->toplevel.handle) {
 		return;
 	}
-	wlr_foreign_toplevel_handle_v1_set_parent(view->toplevel.handle, parent->toplevel.handle);
+	box_foreign_toplevel_handle_v1_set_parent(view->toplevel.handle, parent->toplevel.handle);
 }
 
 static void
